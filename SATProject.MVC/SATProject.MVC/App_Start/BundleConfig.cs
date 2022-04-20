@@ -18,13 +18,11 @@ namespace IdentitySample
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            bundles.Add(new Bundle("~/bundles/bootstrap").Include(
+                       "~/Scripts/vendor/purecounter/purecounter.js", "~/Scripts/vendor/aos/aos.js", "~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js", "~/Scripts/vendor/swiper/swiper-bundle.min.js", "~/Scripts/vendor/php-email-form/validate.js", "~/Scripts/js/main.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/vendor/animate.css/animate.min.css", "~/Content/vendor/aos/aos.css", "~/Content/vendor/bootstrap/css/bootstrap.min.css", "~/Content/vendor/bootstrap-icons/bootstrap-icons.css", "~/Content/vendor/boxicons/css/boxicons.min.css", "~/Content/vendor/remixicon/remixicon.css", "~/Content/vendor/swiper/swiper-bundle.min.css", "~/Content/css/style.css"));
         }
     }
 }
