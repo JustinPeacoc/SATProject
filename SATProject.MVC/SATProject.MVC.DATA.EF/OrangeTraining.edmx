@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OrangeTrainingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="OrangeTraining.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Courses">
           <Key>
             <PropertyRef Name="CourseID" />
@@ -130,7 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OrangeTrainingModelStoreContainer">
+        <EntityContainer Name="OrangeTrainingStoreContainer">
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enrollments" EntityType="Self.Enrollments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScheduledClasses" EntityType="Self.ScheduledClasses" Schema="dbo" store:Type="Tables" />
@@ -162,8 +162,8 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="OrangeTrainingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cours">
+      <Schema Namespace="OrangeTraining" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseID" />
           </Key>
@@ -198,7 +198,7 @@
           <Property Name="InstructorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SCSID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cours" Relationship="Self.FK_ScheduledClasses_Courses" FromRole="ScheduledClasses" ToRole="Courses" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_ScheduledClasses_Courses" FromRole="ScheduledClasses" ToRole="Courses" />
           <NavigationProperty Name="Enrollments" Relationship="Self.FK_Enrollments_ScheduledClasses" FromRole="ScheduledClasses" ToRole="Enrollments" />
           <NavigationProperty Name="ScheduledClassStatus" Relationship="Self.FK_ScheduledClasses_ScheduledClassStatuses" FromRole="ScheduledClasses" ToRole="ScheduledClassStatuses" />
         </EntityType>
@@ -239,7 +239,7 @@
           <NavigationProperty Name="Students" Relationship="Self.FK_Students_StudentStatuses" FromRole="StudentStatuses" ToRole="Students" />
         </EntityType>
         <Association Name="FK_ScheduledClasses_Courses">
-          <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+          <End Role="Courses" Type="OrangeTraining.Course" Multiplicity="1" />
           <End Role="ScheduledClasses" Type="Self.ScheduledClass" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Courses">
@@ -299,7 +299,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="OrangeTrainingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="Courses" EntityType="OrangeTraining.Course" />
           <EntitySet Name="Enrollments" EntityType="Self.Enrollment" />
           <EntitySet Name="ScheduledClasses" EntityType="Self.ScheduledClass" />
           <EntitySet Name="ScheduledClassStatuses" EntityType="Self.ScheduledClassStatus" />
@@ -331,9 +331,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OrangeTrainingModelStoreContainer" CdmEntityContainer="OrangeTrainingEntities">
+        <EntityContainerMapping StorageEntityContainer="OrangeTrainingStoreContainer" CdmEntityContainer="OrangeTrainingEntities">
           <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="OrangeTrainingModel.Cours">
+            <EntityTypeMapping TypeName="OrangeTraining.Course">
               <MappingFragment StoreEntitySet="Courses">
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="CourseName" ColumnName="CourseName" />
@@ -346,7 +346,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Enrollments">
-            <EntityTypeMapping TypeName="OrangeTrainingModel.Enrollment">
+            <EntityTypeMapping TypeName="OrangeTraining.Enrollment">
               <MappingFragment StoreEntitySet="Enrollments">
                 <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
@@ -356,7 +356,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ScheduledClasses">
-            <EntityTypeMapping TypeName="OrangeTrainingModel.ScheduledClass">
+            <EntityTypeMapping TypeName="OrangeTraining.ScheduledClass">
               <MappingFragment StoreEntitySet="ScheduledClasses">
                 <ScalarProperty Name="ScheduledClassesID" ColumnName="ScheduledClassesID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -369,7 +369,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ScheduledClassStatuses">
-            <EntityTypeMapping TypeName="OrangeTrainingModel.ScheduledClassStatus">
+            <EntityTypeMapping TypeName="OrangeTraining.ScheduledClassStatus">
               <MappingFragment StoreEntitySet="ScheduledClassStatuses">
                 <ScalarProperty Name="SCSID" ColumnName="SCSID" />
                 <ScalarProperty Name="SCSName" ColumnName="SCSName" />
@@ -377,7 +377,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="OrangeTrainingModel.Student">
+            <EntityTypeMapping TypeName="OrangeTraining.Student">
               <MappingFragment StoreEntitySet="Students">
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -395,7 +395,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StudentStatuses">
-            <EntityTypeMapping TypeName="OrangeTrainingModel.StudentStatus">
+            <EntityTypeMapping TypeName="OrangeTraining.StudentStatus">
               <MappingFragment StoreEntitySet="StudentStatuses">
                 <ScalarProperty Name="SSID" ColumnName="SSID" />
                 <ScalarProperty Name="SSName" ColumnName="SSName" />

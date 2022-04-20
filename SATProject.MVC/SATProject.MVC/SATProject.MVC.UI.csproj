@@ -557,6 +557,12 @@
     <Content Include="Scripts\OGScripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\OGScripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SATProject.MVC.DATA.EF\SATProject.MVC.DATA.EF.csproj">
+      <Project>{cb58171b-e31e-443c-bb1f-a9678d04eda4}</Project>
+      <Name>SATProject.MVC.DATA.EF</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

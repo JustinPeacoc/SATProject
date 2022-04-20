@@ -25,7 +25,7 @@ namespace SATProject.MVC.DATA.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Enrollment> Enrollments { get; set; }
         public virtual DbSet<ScheduledClass> ScheduledClasses { get; set; }
         public virtual DbSet<ScheduledClassStatus> ScheduledClassStatuses { get; set; }

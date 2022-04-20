@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace SATProject.MVC.DATA.EF//.OTMetaData
 {
-    class OTMetaData
-    {
-        public class Cours
+
+        public class CourseMetadata
         {
 
             //public int CourseID { get; set; }
@@ -30,10 +25,12 @@ namespace SATProject.MVC.DATA.EF//.OTMetaData
 
             [UIHint("MultilineText")]
             [StringLength(250, ErrorMessage = "*cannot exceed past 250 characters")]
+            [DisplayFormat(NullDisplayText = "N/A")]
             public string Curriculum { get; set; }
 
             [UIHint("MultilineText")]
             [StringLength(500, ErrorMessage = "*cannot exceed 500 characters")]
+            [DisplayFormat(NullDisplayText = "N/A")]
             public string Notes { get; set; }
 
             [Required(ErrorMessage = "*")]
@@ -41,7 +38,10 @@ namespace SATProject.MVC.DATA.EF//.OTMetaData
             public bool IsActive { get; set; }
         }
 
-        public class Enrollment
+        [MetadataType(typeof(CourseMetadata))]
+        public partial class Course { }
+
+        public class EnrollmentMetadata
         {
             //public int EnrollmentID { get; set; }
 
@@ -53,10 +53,14 @@ namespace SATProject.MVC.DATA.EF//.OTMetaData
 
             [Required(ErrorMessage = "*needs to be formatted in the right date format")]
             [Display(Name = "Enrollment Date")]
+            [DisplayFormat(DataFormatString = "{0:d}, ApplyFormatEditMode = true")]
             public DateTime EnrollmentDate { get; set; }
         }
 
-        public class ScheduledClass
+        [MetadataType(typeof(EnrollmentMetadata))]
+        public partial class Enrollment { }
+
+        public class ScheduledClassMetadata
         {
             //public int ScheduledClassesID { get; set; }
 
@@ -65,10 +69,12 @@ namespace SATProject.MVC.DATA.EF//.OTMetaData
 
             [Required(ErrorMessage = "*")]
             [Display(Name = "Start Date")]
+            [DisplayFormat(DataFormatString = "{0:d}, ApplyFormatEditMode = true")]
             public DateTime StartDate { get; set; }
 
             [Required(ErrorMessage = "*")]
             [Display(Name = "End Date")]
+            [DisplayFormat(DataFormatString = "{0:d}, ApplyFormatEditMode = true")]
             public DateTime EndDate { get; set; }
 
             [Required(ErrorMessage = "*")]
@@ -84,18 +90,23 @@ namespace SATProject.MVC.DATA.EF//.OTMetaData
             [Display(Name = "Class Status")]
             public int SCSID { get; set; }
         }
+        [MetadataType(typeof(ScheduledClassMetadata))]
+        public partial class ScheduledClass { }
 
-        public class ScheduledClassStatus
+        public class ScheduledClassStatusMetadata
         {
             //public int SCSID { get; set; }
 
             [Required(ErrorMessage = "*")]
-            [Display(Name = "Class Name")]
+            [Display(Name = "Status")]
             [StringLength(100, ErrorMessage = "*cannot exceed 100 characters")]
             public string SCSName { get; set; }
         }
 
-        public class Student
+        [MetadataType(typeof(ScheduledClassStatusMetadata))]
+        public partial class ScheduledClassStatus { }
+
+        public class StudentMetadata
         {
             //public int StudentID { get; set; }
 
@@ -109,50 +120,77 @@ namespace SATProject.MVC.DATA.EF//.OTMetaData
             [StringLength(50, ErrorMessage = "*cannot exceed 50 characters")]
             public string LastName { get; set; }
 
+            [DisplayFormat(NullDisplayText = "N/A")]
             [StringLength(50, ErrorMessage = "*cannot exceed 50 characters")]
             public string Major { get; set; }
 
+            [DisplayFormat(NullDisplayText = "N/A")]
             [StringLength(50, ErrorMessage = "*cannot exceed 50 characters")]
             public string Address { get; set; }
 
+            [DisplayFormat(NullDisplayText = "N/A")]
             [StringLength(25, ErrorMessage = "*cannot exceed 25 characters")]
             public string City { get; set; }
 
+            [DisplayFormat(NullDisplayText = "N/A")]
             [StringLength(2, ErrorMessage = "*cannot exceed 2 characters")]
             public string State { get; set; }
 
-            [Display(Name ="Zip Code")]
+            [Display(Name = "Zip Code")]
+            [DisplayFormat(NullDisplayText = "N/A")]
             [StringLength(10, ErrorMessage = "*cannot exceed 10 characters")]
             public string ZipCode { get; set; }
 
             [StringLength(13, ErrorMessage = "*cannot exceed 13 characters")]
+            [DisplayFormat(NullDisplayText = "N/A")]
             public string Phone { get; set; }
 
             [Required(ErrorMessage = "*")]
             [StringLength(60, ErrorMessage = "*cannot exceed 60 characters")]
             public string Email { get; set; }
 
-            [Display(Name ="Image")]
+            [Display(Name = "Image")]
+            [DisplayFormat(NullDisplayText = "N/A")]
             [StringLength(100, ErrorMessage = "*cannot exceed 100 characters")]
             public string PhotoURL { get; set; }
 
-            [Required(ErrorMessage ="*")]
+            [Required(ErrorMessage = "*")]
             public int SSID { get; set; }
+
+        }
+        [MetadataType(typeof(StudentMetadata))]
+        public partial class Student
+        {
+            //[Display(Name = "Student Full Name")]
+            //public string FullName
+            //{
+            //    get
+            //    {
+            //        return FirstName + " " + LastName;
+            //    }
+            //}
+            public string FullName { get  { return FirstName + " " + LastName; } }
         }
 
-        public class StudentStatus
+        public class StudentStatusMetadata
         {
             //public int SSID { get; set; }
 
-                [Required(ErrorMessage ="*")]
-                [Display(Name ="Status")]
+            [Required(ErrorMessage = "*")]
+            [Display(Name = "Status")]
             [StringLength(30, ErrorMessage = "*cannot exceed 30 characters")]
             public string SSName { get; set; }
 
-            [Display(Name ="Description")]
-            [StringLength(250, ErrorMessage ="*cannot exceed 250 characters")]
+            [Display(Name = "Description")]
+            [DisplayFormat(NullDisplayText = "N/A")]
+            [StringLength(250, ErrorMessage = "*cannot exceed 250 characters")]
             [UIHint("MultilineText")]
             public string SSDescription { get; set; }
         }
+        [MetadataType(typeof(StudentStatusMetadata))]
+        public partial class StudentStatus
+        {
+
+        }
     }
-}
+

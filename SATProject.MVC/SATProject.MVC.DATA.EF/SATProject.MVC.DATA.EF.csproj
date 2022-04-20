@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cours.cs">
+    <Compile Include="Course.cs">
       <DependentUpon>OrangeTraining.tt</DependentUpon>
     </Compile>
     <Compile Include="Enrollment.cs">
