@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b813178331aa425a910213cd1c4e9302" Name="Diagram1">
+        <EntityTypeShape EntityType="OrangeTrainingModel.Cours" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeTrainingModel.Enrollment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeTrainingModel.ScheduledClass" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeTrainingModel.ScheduledClassStatus" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeTrainingModel.Student" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeTrainingModel.StudentStatus" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="OrangeTrainingModel.FK_ScheduledClasses_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="OrangeTrainingModel.FK_Enrollments_ScheduledClasses" ManuallyRouted="false" />
+        <AssociationConnector Association="OrangeTrainingModel.FK_Enrollments_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="OrangeTrainingModel.FK_ScheduledClasses_ScheduledClassStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="OrangeTrainingModel.FK_Students_StudentStatuses" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
