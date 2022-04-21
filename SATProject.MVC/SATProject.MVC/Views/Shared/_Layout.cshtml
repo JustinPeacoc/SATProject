@@ -18,12 +18,12 @@
 
     <!-- Vendor CSS Files -->
     @*<link href="~/Content/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="~/Content/vendor/aos/aos.css" rel="stylesheet">
-    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="~/Content/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="~/Content/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="~/Content/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">*@
+        <link href="~/Content/vendor/aos/aos.css" rel="stylesheet">
+        <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="~/Content/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="~/Content/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="~/Content/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="~/Content/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">*@
 
     <!-- Template Main CSS File -->
     @*<link href="~/Content/css/style.css" rel="stylesheet">*@
@@ -44,39 +44,38 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="index.html">Mentor</a></h1>
+            <h1 class="logo me-auto">@Html.ActionLink("Orange Training", "Index", "Home")</h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="~/Content/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="active" href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                    <li><a href="trainers.html">Trainers</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-                    @Html.Partial("_LoginPartial")
+                    <li><a href="courses.html">Courses</a></li>
+                    @*<li><a href="trainers.html">Trainers</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>*@
+
                     @if (Request.IsAuthenticated)
                     {
                         <li class="dropdown">
-                            <a href="#"><span>Admin</span> <i class="bi bi-chevron-down"></i></a>
+                            <a href="#"><span>Scheduler</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li>@Html.ActionLink("Enrollment", "Index", "Enrollment")</li>
                                 <li>@Html.ActionLink("Students", "Index", "Students")</li>
                                 <li>@Html.ActionLink("ScheduledClasses", "Index", "ScheduledClasses")</li>
                                 <li><a href="#">Drop Down 1</a></li>
-                                <li class="dropdown">
-                                    <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="#">Deep Drop Down 4</a></li>
-                                        <li><a href="#">Deep Drop Down 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Drop Down 2</a></li>
-                                <li><a href="#">Drop Down 3</a></li>
-                                <li><a href="#">Drop Down 4</a></li>
+                                @*<li class="dropdown">
+                                        <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                        <ul>
+                                            <li><a href="#">Deep Drop Down 4</a></li>
+                                            <li><a href="#">Deep Drop Down 5</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Drop Down 2</a></li>
+                                    <li><a href="#">Drop Down 3</a></li>
+                                    <li><a href="#">Drop Down 4</a></li>*@
                             </ul>
                         </li>
                     }
@@ -93,28 +92,32 @@
                                 <li>@Html.ActionLink("ScheduledClassStatus", "Index", "ScheduledClassStatus")</li>
                                 <li>@Html.ActionLink("StudentStatus", "Index", "StudentStatus")</li>
                                 @*<li><a href="#">Drop Down 1</a></li>
-                                <li class="dropdown">
-                                    <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="#">Deep Drop Down 4</a></li>
-                                        <li><a href="#">Deep Drop Down 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Drop Down 2</a></li>
-                                <li><a href="#">Drop Down 3</a></li>
-                                <li><a href="#">Drop Down 4</a></li>*@
+                                    <li class="dropdown">
+                                        <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                        <ul>
+                                            <li><a href="#">Deep Drop Down 4</a></li>
+                                            <li><a href="#">Deep Drop Down 5</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Drop Down 2</a></li>
+                                    <li><a href="#">Drop Down 3</a></li>
+                                    <li><a href="#">Drop Down 4</a></li>*@
                             </ul>
                         </li>
                     }
-                @*</ul>*@
-                @*</li>*@
-                <li><a href="contact.html">Contact</a></li>
+                    @*</ul>*@
+                    @*</li>*@
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
+
+            @if (!Request.IsAuthenticated)
+            {
+                <a class="get-started-btn" href="@Url.Action("Register", "Account")">Get Started</a>
+            }
+
+            @Html.Partial("_LoginPartial")
             </nav><!-- .navbar -->
-
-            <a href="courses.html" class="get-started-btn">Get Started</a>
-
         </div>
     </header><!-- End Header -->
     <!-- ======= Hero Section ======= -->

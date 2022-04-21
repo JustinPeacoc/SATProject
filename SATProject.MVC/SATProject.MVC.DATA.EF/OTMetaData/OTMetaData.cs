@@ -169,6 +169,7 @@ namespace SATProject.MVC.DATA.EF//.OTMetaData
             //        return FirstName + " " + LastName;
             //    }
             //}
+            [Display(Name = "Student Full Name")]
             public string FullName { get  { return FirstName + " " + LastName; } }
         }
 

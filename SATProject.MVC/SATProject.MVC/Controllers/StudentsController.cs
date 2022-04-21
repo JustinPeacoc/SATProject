@@ -17,6 +17,8 @@ namespace SATProject.MVC.Controllers
         private OrangeTrainingEntities db = new OrangeTrainingEntities();
 
         // GET: Students
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Index()
         {
             var students = db.Students.Include(s => s.StudentStatus);
@@ -24,6 +26,8 @@ namespace SATProject.MVC.Controllers
         }
 
         // GET: Students/Details/5
+        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Scheduler")]
         public ActionResult Details(int? id)
         {
             if (id == null)
