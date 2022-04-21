@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="OrangeTraining.Course" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="OrangeTraining.Enrollment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="OrangeTraining.ScheduledClass" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrangeTraining.ScheduledClassStatus" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrangeTraining.ScheduledClassStatus" Width="2.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OrangeTraining.Student" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OrangeTraining.StudentStatus" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
         <AssociationConnector Association="OrangeTraining.FK_ScheduledClasses_Courses" ManuallyRouted="false" />
