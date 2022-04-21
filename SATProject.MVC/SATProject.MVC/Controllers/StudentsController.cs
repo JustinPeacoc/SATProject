@@ -81,7 +81,7 @@ namespace SATProject.MVC.Controllers
 
                         #region Resize Image
 
-                        string savePath = Server.MapPath("~/Content/imgs/");
+                        string savePath = Server.MapPath("~/Content/img/");
 
                         Image convertedImage = Image.FromStream(studentImg.InputStream);
 
