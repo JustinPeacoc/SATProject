@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Mentor Bootstrap Template - Index</title>
+    <title>@ViewBag</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -52,20 +52,20 @@
                 <ul>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-                    <li><a href="courses.html">Courses</a></li>
+                    @*<li><a href="courses.html">Courses</a></li>*@
                     @*<li><a href="trainers.html">Trainers</a></li>
                         <li><a href="events.html">Events</a></li>
                         <li><a href="pricing.html">Pricing</a></li>*@
 
-                    @if (Request.IsAuthenticated)
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Scheduler"))
                     {
                         <li class="dropdown">
                             <a href="#"><span>Scheduler</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li>@Html.ActionLink("Enrollment", "Index", "Enrollment")</li>
+                                <li>@Html.ActionLink("Enrollment", "Index", "Enrollments")</li>
                                 <li>@Html.ActionLink("Students", "Index", "Students")</li>
-                                <li>@Html.ActionLink("ScheduledClasses", "Index", "ScheduledClasses")</li>
-                                <li><a href="#">Drop Down 1</a></li>
+                                <li>@Html.ActionLink("Scheduled Classes", "Index", "ScheduledClasses")</li>
+                                @*<li><a href="#">Drop Down 1</a></li>*@
                                 @*<li class="dropdown">
                                         <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                                         <ul>
@@ -85,12 +85,12 @@
                             <a href="#"><span>Admin</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li>@Html.ActionLink("Students", "Index", "Students")</li>
-                                <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                <li>@Html.ActionLink("Roles Admin", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("Users Admin", "Index", "UsersAdmin")</li>
                                 <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                                <li>@Html.ActionLink("ScheduledClass", "Index", "ScheduledClasses")</li>
-                                <li>@Html.ActionLink("ScheduledClassStatus", "Index", "ScheduledClassStatus")</li>
-                                <li>@Html.ActionLink("StudentStatus", "Index", "StudentStatus")</li>
+                                <li>@Html.ActionLink("Scheduled Class", "Index", "ScheduledClasses")</li>
+                                <li>@Html.ActionLink("Scheduled Class Status", "Index", "ScheduledClassStatus")</li>
+                                <li>@Html.ActionLink("Student Status", "Index", "StudentStatus")</li>
                                 @*<li><a href="#">Drop Down 1</a></li>
                                     <li class="dropdown">
                                         <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -111,12 +111,15 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
 
-            @if (!Request.IsAuthenticated)
-            {
-                <a class="get-started-btn" href="@Url.Action("Register", "Account")">Get Started</a>
-            }
+            <h2 class="ms-4">|</h2>
 
             @Html.Partial("_LoginPartial")
+
+            @if (!Request.IsAuthenticated)
+            {
+                @*<a class="get-started-btn" href="@Url.Action("Register", "Account")">Get Started</a>*@
+            }
+
             </nav><!-- .navbar -->
         </div>
     </header><!-- End Header -->

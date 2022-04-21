@@ -144,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 .get-started-btn {
   margin-left: 22px;
   background: #5fcf80;
-  color: #fff;
+  color: #fff !important;
   border-radius: 50px;
   padding: 8px 25px;
   white-space: nowrap;
@@ -154,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .get-started-btn:hover {
   background: #3ac162;
-  color: #fff;
+  color: #fff !important;
 }
 @media (max-width: 768px) {
   .get-started-btn {
