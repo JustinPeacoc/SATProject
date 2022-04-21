@@ -134,10 +134,53 @@ namespace SATProject.MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoURL,SSID")] Student student)
+        public ActionResult Edit([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoURL,SSID")] Student student, HttpPostedFileBase studentImg)
         {
             if (ModelState.IsValid)
             {
+
+                #region File Upload
+
+                string file = "noImage.jpg";
+
+                if (studentImg != null)
+                {
+                    file = studentImg.FileName;
+
+                    string ext = file.Substring(file.LastIndexOf('.'));
+
+
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+
+                    //Check that the uploaded file ext is in our list of acceptable extensions
+                    //and chekc that the file size <= 4MB, which is the default maximum for ASP.NET
+
+                    if (goodExts.Contains(ext.ToLower()) && studentImg.ContentLength <= 4194304)
+                    {
+                        //Create a new file name (using a GUID)
+                        file = Guid.NewGuid() + ext;
+
+                        #region Resize Image
+
+                        string savePath = Server.MapPath("~/Content/imgs/");
+
+                        Image convertedImage = Image.FromStream(studentImg.InputStream);
+
+                        int maxImageSize = 1000;
+
+                        int maxThumbSize = 225;
+
+                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+
+                        #endregion
+                    }
+
+                    //No matter what, update the PhotoUrl with the value of the file variable
+                    student.PhotoURL = file;
+                }
+
+                #endregion
+
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
