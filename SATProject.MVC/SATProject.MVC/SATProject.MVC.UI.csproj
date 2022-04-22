@@ -430,7 +430,7 @@
     <Content Include="Content\vendor\remixicon\remixicon.woff" />
     <Content Include="Content\vendor\remixicon\remixicon.woff2" />
     <Content Include="configs\connections.config" />
-    <Content Include="Content\assets\Documentation.pdf" />
+    <Content Include="Content\assets\DocumentationSAT.pdf" />
     <None Include="Scripts\OGScripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\OGScripts\jquery-3.3.1.js" />
     <Content Include="Scripts\OGScripts\jquery-3.3.1.min.js" />

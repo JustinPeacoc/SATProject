@@ -128,7 +128,8 @@
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
             <h1>Learning Today,<br>Leading Tomorrow</h1>
             <h2>We are team of talented designers making websites with Bootstrap</h2>
-            <a href="courses.html" class="btn-get-started">Get Started</a>
+            @*<a href="courses.html" class="btn-get-started">Get Started</a>*@
+            <a class="get-started-btn" href="@Url.Action("Register", "Account")">Get Started</a>
         </div>
     </section><!-- End Hero -->
 
@@ -174,15 +175,15 @@
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Join Our Newsletter</h4>
+                        @*<h4>Join Our Newsletter</h4>
                         <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
                         <form action="" method="post">
                             <input type="email" name="email"><input type="submit" value="Subscribe">
-                        </form>
+                        </form>*@
                        
                         @* Added to add documentation information *@
                         <h4>
-                            <a href="~/Content/assets/Documentation.pdf" class="btn btn-warning" target="_blank">Documentation</a>
+                            <a href="~/Content/assets/DocumentationSAT.pdf" class="btn btn-warning" target="_blank">Documentation</a>
                         </h4>
                     </div>
 

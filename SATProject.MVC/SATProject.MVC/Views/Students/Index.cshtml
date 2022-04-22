@@ -19,10 +19,11 @@
 
     @if (Request.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Scheduler"))
     {
-        if (Request.IsAuthenticated && User.IsInRole("Admin")){
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+        if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
         }
 
 
@@ -58,7 +59,17 @@
                 <th>
                     @Html.DisplayNameFor(model => model.FirstOrDefault().StudentStatus.SSName)
                 </th>
-                <th></th>
+
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <th></th>
+                }
+
+                @if (Request.IsAuthenticated && User.IsInRole("Scheduler"))
+                {
+                    <th></th>
+                }
+
             </tr>
 
             @foreach (var item in Model)
@@ -92,11 +103,21 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.StudentStatus.SSName)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
-                    </td>
+
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                        </td>
+                    }
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Scheduler"))
+                    {
+                        <td> @Html.ActionLink("Details", "Details", new { id = item.StudentID })</td>
+                    }
                 </tr>
             }
 

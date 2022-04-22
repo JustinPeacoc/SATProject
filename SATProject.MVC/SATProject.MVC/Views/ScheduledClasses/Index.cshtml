@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SATProject.MVC.DATA.EF.ScheduledClass>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Scheduled Class";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table h-100 w-50">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.StartDate)
@@ -52,11 +52,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.ScheduledClassStatus.SCSName)
         </td>
+
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduledClassesID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ScheduledClassesID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduledClassesID })
-        </td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassesID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ScheduledClassesID })
+
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                @Html.ActionLink(" | Delete", "Delete", new { id = item.ScheduledClassesID })
+            }
+            </td>
     </tr>
 }
 

@@ -1,19 +1,18 @@
 ﻿@model IdentitySample.Models.RoleViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Roles";
 }
 
-<h2>Edit.</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Roles.</h4>
-        <hr />
+    <div class="form-horizontal h-100 w-50">
+        
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
 

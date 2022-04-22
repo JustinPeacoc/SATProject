@@ -1,16 +1,15 @@
 ﻿@model SATProject.MVC.DATA.EF.StudentStatus
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Status";
 }
 
-<h2>Delete</h2>
+<h2>@ViewBag.Title</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>StudentStatus</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    
+    <dl class="dl-horizontal h-100 w-50">
         <dt>
             @Html.DisplayNameFor(model => model.SSName)
         </dt>

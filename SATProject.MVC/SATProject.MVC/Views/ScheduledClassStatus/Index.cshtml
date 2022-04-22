@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SATProject.MVC.DATA.EF.ScheduledClassStatus>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Class Status";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create Status", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,8 +24,11 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SCSID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SCSID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SCSID })
+            @Html.ActionLink("Details", "Details", new { id=item.SCSID })
+
+            @if(Request.IsAuthenticated && User.IsInRole("Admin")){
+            @Html.ActionLink(" | Delete", "Delete", new { id = item.SCSID })
+            }
         </td>
     </tr>
 }

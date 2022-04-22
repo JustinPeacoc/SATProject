@@ -1,19 +1,18 @@
 ﻿@model SATProject.MVC.DATA.EF.StudentStatus
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Student Status";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>StudentStatus</h4>
-        <hr />
+    <div class="form-horizontal w-100 h-50">
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.SSName, htmlAttributes: new { @class = "control-label col-md-2" })

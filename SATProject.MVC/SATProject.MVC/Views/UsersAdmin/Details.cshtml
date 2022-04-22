@@ -1,15 +1,14 @@
 ﻿@model IdentitySample.Models.ApplicationUser
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "User Details";
 }
 
-<h2>Details.</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    
+    <dl class="dl-horizontal h-100 w-50">
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
         </dt>

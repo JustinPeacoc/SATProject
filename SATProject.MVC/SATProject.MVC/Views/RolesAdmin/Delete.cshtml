@@ -1,17 +1,16 @@
 ﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Role";
 }
 
-<h2>Delete.</h2>
+<h2>@ViewBag.Title</h2>
 
 <h3>Are you sure you want to delete this Role? </h3>
 <p>Deleting this Role will remove all users from this role. It will not delete the users.</p>
 <div>
-    <h4>Role.</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    
+    <dl class="dl-horizontal h-100 w-50">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>

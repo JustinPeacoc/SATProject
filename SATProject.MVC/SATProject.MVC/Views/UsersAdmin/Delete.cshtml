@@ -1,16 +1,15 @@
 ﻿@model IdentitySample.Models.ApplicationUser
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete User";
 }
 
-<h2>Delete.</h2>
+<h2>@ViewBag.Title</h2>
 
 <h3>Are you sure you want to delete this User?</h3>
 <div>
-    <h4>User.</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    
+    <dl class="dl-horizontal h-100 w-50">
         <dt>
             @Html.DisplayNameFor(model => model.UserName)
         </dt>

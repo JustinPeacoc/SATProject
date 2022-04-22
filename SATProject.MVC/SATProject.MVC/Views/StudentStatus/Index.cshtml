@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SATProject.MVC.DATA.EF.StudentStatus>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Student Status";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table h-100 w-50">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.SSName)
@@ -17,23 +17,30 @@
         <th>
             @Html.DisplayNameFor(model => model.SSDescription)
         </th>
-        <th></th>
+        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <th></th>
+        }
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SSName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SSDescription)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SSID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SSID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SSID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSDescription)
+            </td>
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SSID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
+                </td>
+            }
+        </tr>
+    }
 
 </table>

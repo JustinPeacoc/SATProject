@@ -1,19 +1,18 @@
 ﻿@model IdentitySample.Models.RoleViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Role Create";
 }
 
-<h2>Create.</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Role.</h4>
-        <hr />
+    <div class="form-horizontal h-100 w-50">
+        
         @Html.ValidationSummary(true)
 
         <div class="form-group">
