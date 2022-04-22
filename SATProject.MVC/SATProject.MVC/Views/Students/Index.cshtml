@@ -19,9 +19,11 @@
 
     @if (Request.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("Scheduler"))
     {
+        if (Request.IsAuthenticated && User.IsInRole("Admin")){
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
+        }
 
 
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.SearchString }))
