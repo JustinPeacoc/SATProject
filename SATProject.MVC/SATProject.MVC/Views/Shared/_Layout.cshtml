@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>@ViewBag</title>
+    <title>Orange Training | @ViewBag.Title</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -107,7 +107,7 @@
                     }
                     @*</ul>*@
                     @*</li>*@
-                    <li><a href="contact.html">Contact</a></li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
 

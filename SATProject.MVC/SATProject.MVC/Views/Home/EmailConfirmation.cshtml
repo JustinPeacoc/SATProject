@@ -1,0 +1,13 @@
+﻿@model SATProject.MVC.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Email Confirmation";
+}
+
+<div class="container h-100">
+    <h2>@ViewBag.Title</h2>
+
+    <h4>You have sent the following message:</h4>
+    <p>@Model.Message</p>
+    <h4>Someone within the administration team will reach out to @Model.Email as soon as someone is available. Thank you for contacting the administration team!</h4>
+</div>

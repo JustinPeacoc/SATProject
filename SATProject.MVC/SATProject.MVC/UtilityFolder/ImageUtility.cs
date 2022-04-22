@@ -91,7 +91,7 @@ namespace SATProject.MVC.UtilityFolder
         public static void Delete(string path, string fileName)
         {
             //Skip this action if targeted file is the "default image".
-            if (fileName.ToLower() == "noimage.jpg")
+            if (fileName.ToLower() == "Placeholder.jpg")
             {
                 return;
             }

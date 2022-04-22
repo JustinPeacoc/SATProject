@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using SATProject.MVC.DATA.EF;
 using SATProject.MVC.UtilityFolder;
+using PagedList.Mvc;
+using PagedList;
+
 
 namespace SATProject.MVC.Controllers
 {
@@ -17,17 +20,26 @@ namespace SATProject.MVC.Controllers
         private OrangeTrainingEntities db = new OrangeTrainingEntities();
 
         // GET: Students
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Scheduler")]
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int page = 1)
         {
-            var students = db.Students.Include(s => s.StudentStatus);
-            return View(students.ToList());
+            int pageSize = 5;
+
+            var students = db.Students.OrderBy(m => m.StudentID).ToList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = (from m in students
+                            where m.FullName.ToLower().Contains(searchString.ToLower())
+                            select m).ToList();
+            }
+
+            ViewBag.SearchString = searchString;
+
+            return View(students.ToPagedList(page, pageSize));
         }
 
         // GET: Students/Details/5
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Scheduler")]
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -64,7 +76,7 @@ namespace SATProject.MVC.Controllers
 
                 #region File Upload
 
-                string file = "noImage.jpg";
+                string file = "Placeholder.jpg";
 
                 if (studentImg != null)
                 {
@@ -144,7 +156,7 @@ namespace SATProject.MVC.Controllers
             {
                 #region File Upload
 
-                string file = "noImage.jpg";
+                string file = "Placeholder.jpg";
 
                 if (studentImg != null)
                 {
